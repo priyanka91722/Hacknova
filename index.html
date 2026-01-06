@@ -1074,7 +1074,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <script src="js/script.js"></script>
+</body>
 
+        <script>
+            (function(){
+                var el = document.getElementById('year');
+                if(el) el.textContent = new Date().getFullYear();
+            })();
+        </script>
 
 </body>
 
