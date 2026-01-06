@@ -870,3 +870,25 @@ input[type=range]::-webkit-slider-runnable-track {
 .explore-link:focus-visible {
   outline: none;
 }
+
+/* ===============================
+   Mobile Hero Text Readability
+   (Level 1 Enhancement)
+================================ */
+
+@media (max-width: 640px) {
+  .hero-glass h1 {
+    line-height: 1.25;        /* More breathing space */
+    margin-bottom: 28px;      /* Separate heading & text */
+  }
+
+  .hero-glass p {
+    line-height: 1.75;        /* Improved paragraph readability */
+    margin-bottom: 40px;      /* Better spacing before buttons */
+    font-size: 1.05rem;       /* Slightly more comfortable size */
+  }
+
+  .hero-actions {
+    margin-top: 12px;
+  }
+}
