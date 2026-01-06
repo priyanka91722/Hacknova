@@ -477,6 +477,17 @@
                 </button>
             </div>
         </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-900 border-t border-gray-800">
+            <div class="px-4 py-4 space-y-3">
+                <a href="index.html" class="block py-2 text-gray-300 hover:text-white">Home</a>
+                <a href="air.html" class="block py-2 text-gray-300 hover:text-eco-red">Air Pollution</a>
+                <a href="water.html" class="block py-2 text-gray-300 hover:text-eco-blue">Water Pollution</a>
+                <a href="light.html" class="block py-2 text-gray-300 hover:text-eco-orange">Light Pollution</a>
+                <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors">AI Prediction</a>
+            </div>
+        </div>
     </nav>
 
     <!-- Main Content -->
@@ -870,9 +881,19 @@
                     document.getElementById('stat-avg-aqi').textContent = avg.toFixed(1);
                 }
             }
+            
+            // Mobile menu functionality
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
         });
     </script>
-
+    
     <script src="js/data-loader.js"></script>
     <script src="js/ai-visualizations.js"></script>
     <script src="js/ai-model.js"></script>
