@@ -33,14 +33,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Chart.js for data visualization -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
+    
 
 
     <!-- Manifest for PWA -->
     <link rel="manifest" href="manifest.json">
+    
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml"
@@ -61,9 +63,26 @@
         }
     }
 </script>
+<!-- Precautions Modal -->
+<div id="precaution-modal"
+     class="fixed inset-0 bg-black/60 hidden items-center justify-center z-[9999]">
+
+  <div class="bg-gray-900 text-white max-w-lg w-[90%] rounded-2xl p-6 relative animate-fade-in">
+    
+    <button onclick="closePrecautions()"
+            class="absolute top-3 right-3 text-gray-400 hover:text-white text-xl">
+      ✖
+    </button>
+
+    <h2 id="precaution-title" class="text-2xl font-bold mb-4"></h2>
+
+    <ul id="precaution-content" class="space-y-3 text-gray-300"></ul>
+  </div>
+</div>
 
 <body class="bg-gray-900 text-white">
     <!-- Skip to Content Link for Accessibility -->
+    
     <a href="#main-content" class="skip-link sr-only focus:not-sr-only" aria-label="Skip to main content">Skip to main content</a>
 
     <!-- Navigation Header -->
@@ -77,6 +96,7 @@
                         <span class="text-white font-bold text-xl">E</span>
                     </div>
                     <span class="text-2xl font-bold gradient-text">EcoPulse</span>
+                    
                 </a>
 
                 <div class="hidden md:flex items-center space-x-8">
@@ -92,6 +112,7 @@
                 </div>
 
                 <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white">
+                    
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
@@ -122,6 +143,7 @@
         <!-- HERO SECTION -->
         <!-- HERO SECTION -->
         <section class="hero-section">
+            
 
             <!-- Background Layers -->
             <div class="hero-bg">
@@ -143,6 +165,13 @@
 
                 <!-- Floating Particles -->
                 <div class="hero-particles"></div>
+                <div class="precaution-buttons">
+  <button onclick="openPrecautions('air')">🌬️ Air Precautions</button>
+  <button onclick="openPrecautions('water')">💧 Water Precautions</button>
+  <button onclick="openPrecautions('light')">💡 Light Precautions</button>
+  <button onclick="openPrecautions('noise')">🔊 Noise Precautions</button>
+</div>
+
             </div>
 
             <!-- Hero Content -->
@@ -168,6 +197,13 @@
                         <a href="air.html" class="btn-primary">Explore Now</a>
                         <a href="presentation.html" class="btn-outline">View Demo</a>
                     </div>
+                    <div class="hero-load hero-delay-4 mt-6 flex flex-wrap gap-3 justify-center">
+  <button onclick="openPrecautions('air')" class="btn-outline">🌬️ Air Precautions</button>
+  <button onclick="openPrecautions('water')" class="btn-outline">💧 Water Precautions</button>
+  <button onclick="openPrecautions('light')" class="btn-outline">💡 Light Precautions</button>
+  <button onclick="openPrecautions('noise')" class="btn-outline">🔊 Noise Precautions</button>
+</div>
+
 
                     <div class="hero-load hero-delay-4">
                         <a href="ai-prediction.html" class="btn-ai">
@@ -189,6 +225,7 @@
                     <rect x="1" y="1" width="22" height="38" rx="11" stroke="currentColor" stroke-width="2" />
                     <circle cx="12" cy="12" r="3" fill="currentColor">
                         <animate attributeName="cy" from="10" to="28" dur="1.6s" repeatCount="indefinite" />
+                        
                     </circle>
                 </svg>
             </div>
@@ -209,7 +246,7 @@
                     <div class="stat-item scroll-reveal">
                         <div class="text-4xl md:text-5xl font-bold text-eco-blue mb-2" data-counter="2" data-suffix="B">
                             2B</div>
-                        <p class="text-gray-400 text-sm md:text-base">Lack safe water</p>
+                        <p class="text-gray-400 text-sm md:text-base">Lack Safe Water</p>
                     </div>
                     <div class="stat-item scroll-reveal">
                         <div class="text-4xl md:text-5xl font-bold text-eco-orange mb-2" data-counter="80"
@@ -218,6 +255,7 @@
                     </div>
                     <div class="stat-item scroll-reveal">
                         <div class="text-4xl md:text-5xl font-bold text-eco-purple mb-2" data-counter="45"
+                            
                             data-suffix="%">45%</div>
                         <p class="text-gray-400 text-sm md:text-base">Exposed to harmful noise</p>
                     </div>
@@ -302,6 +340,7 @@
                         <h3 class="text-2xl font-bold mb-3 text-amber-400">Light Pollution</h3>
                         <p class="text-gray-300 mb-4">
                             80% can't see the Milky Way. Experience night sky simulations with light pollution intensity
+                            
                             controls.
                         </p>
                         <div
@@ -346,6 +385,7 @@
                         class="card group cursor-pointer transform hover:scale-105 transition-all duration-300 scroll-reveal bg-gradient-to-br from-purple-900/30 to-violet-800/20 border-purple-500/30 rounded-3xl p-8 min-h-[320px] flex flex-col">
                         <div
                             class="flex items-center justify-center w-16 h-16 bg-purple-500/20 rounded-full mb-4 group-hover:scale-110 transition-transform">
+                            
                             <svg class="w-8 h-8 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
                                     d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z"
@@ -411,6 +451,7 @@
                         </p>
                         <div
                             class="flex items-center text-teal-400 font-semibold group-hover:translate-x-2 transition-transform">
+                            
                             Explore Plastic Data
                             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
@@ -440,6 +481,7 @@
                             Explore Radiation Data
                             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                    
                                 </path>
                             </svg>
                         </div>
@@ -459,6 +501,7 @@
                 and tools built for decision-makers and curious learners alike.
             </p>
         </div>
+
 
         <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
 
@@ -513,6 +556,23 @@
                 </p>
             </div>
 
+      <!-- Card 2 -->
+      <div class="card ecopulse-card text-center scroll-reveal">
+        <div
+          class="w-16 h-16 bg-gradient-to-r from-eco-green to-eco-blue rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Real Data</h3>
+        <p class="text-gray-300">
+          Based on WHO, EPA, and scientific research with regional breakdowns
+            
+        </p>
+      </div>
+
+
         </div>
 
         <div class="text-center mt-8">
@@ -528,6 +588,7 @@
                 <div class="reviews-header">
                     <h2>What People Are Saying</h2>
                     <p>Real experiences from our community members</p>
+                    
                 </div>
                 
                 <div class="reviews-track">
@@ -572,6 +633,7 @@
                         <div class="review-card">
                             <div class="review-content">
                                 "The AI prediction models are fascinating. They help me understand future environmental challenges."
+                                
                             </div>
                             <div class="review-author">
                                 <div>
@@ -608,6 +670,7 @@
                         <div class="review-card">
                             <div class="review-content">
                                 "Incredible platform that makes complex environmental data accessible to everyone."
+                                
                             </div>
                             <div class="review-author">
                                 <div>
@@ -1082,8 +1145,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <script src="js/script.js"></script>
+</body>
 
+        <script>
+            (function(){
+                var el = document.getElementById('year');
+                if(el) el.textContent = new Date().getFullYear();
+            })();
+        </script>
 
 </body>
+
 
 </html>
