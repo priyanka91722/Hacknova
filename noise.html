@@ -2,131 +2,377 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="Explore noise pollution data through interactive 3D visualizations. Understand the impact of urban sound on health and environment." />
-  <title>Noise Pollution - EcoPulse</title>
-
-  <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="css/styles.css">
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'eco-green': '#10B981',
-            'eco-blue': '#3B82F6',
-            'eco-purple': '#8B5CF6',
-            'eco-orange': '#F97316',
-            'eco-red': '#EF4444',
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Explore noise pollution data through interactive 3D visualizations. Understand the impact of urban sound on health and environment.">
+    <title>Noise Pollution - EcoPulse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/air.css">
+    
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔊</text></svg>">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#10B981',
+                        'eco-blue': '#3B82F6',
+                        'eco-purple': '#8B5CF6',
+                        'eco-orange': '#F97316',
+                        'eco-red': '#EF4444',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
         }
-      }
-    }
-  </script>
-
-  <style>
-    .glass-card {
-      background: rgba(31, 41, 55, 0.7);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(75, 85, 99, 0.4);
-    }
-  </style>
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(31, 41, 55, 0.85);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(75, 85, 99, 0.5);
+        }
+    </style>
 </head>
 
 <body class="bg-gray-900 text-white font-['Inter']">
+    <!-- Skip to Content Link for Accessibility -->
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only" aria-label="Skip to main content">Skip to main content</a>
+    
+    <nav
+        class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800 transition-all duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">E</span>
+                    </div>
+                    <span class="text-2xl font-bold gradient-text">EcoPulse</span>
+                </a>
 
-  <!-- Accessibility -->
-  <a href="#main-content" class="sr-only focus:not-sr-only" aria-label="Skip to main content">
-    Skip to main content
-  </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors relative group focus-outline" tabindex="0">
+                        Home
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-green transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="air.html" class="text-gray-300 hover:text-eco-red transition-colors relative group focus-outline" tabindex="0">
+                        Air
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-red transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="water.html" class="text-gray-300 hover:text-eco-blue transition-colors relative group focus-outline" tabindex="0">
+                        Water
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-blue transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="light.html" class="text-gray-300 hover:text-eco-orange transition-colors relative group focus-outline" tabindex="0">
+                        Light
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-orange transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="noise.html" class="text-eco-purple font-medium relative focus-outline" tabindex="0">
+                        Noise
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-eco-purple"></span>
+                    </a>
+                    <a href="ai-prediction.html" class="nav-link hover:text-purple-400 transition-colors focus-outline" tabindex="0">AI
+                        Prediction</a>
+                    <a href="presentation.html"
+                        class="px-5 py-2 bg-eco-green/20 text-eco-green rounded-full hover:bg-eco-green/30 transition-all hover:scale-105 border border-eco-green/30">Demo</a>
+                </div>
 
-  <!-- Navigation -->
-  <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800">
-    <!-- (NAV CONTENT UNCHANGED, GROUPED FOR READABILITY) -->
-  </nav>
-
-  <!-- Main Content -->
-  <main id="main-content" class="pt-16" role="main">
-
-    <!-- Hero Section -->
-    <section aria-labelledby="noise-hero-title"
-      class="relative py-28 min-h-[60vh] flex items-center justify-center overflow-hidden">
-
-      <div class="absolute inset-0 z-0" aria-hidden="true">
-        <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&q=80"
-          alt="" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gray-900/80 mix-blend-multiply"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent"></div>
-      </div>
-
-      <div class="container mx-auto px-4 text-center relative z-10">
-        <h1 id="noise-hero-title" class="text-5xl md:text-7xl font-extrabold mb-6">
-          Noise <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300">Pollution</span>
-        </h1>
-        <p class="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
-          45% of urban populations exposed to harmful noise levels.
-        </p>
-      </div>
-    </section>
-
-    <!-- Simulation Section -->
-    <section id="simulation-section" class="py-16 bg-gray-900" aria-labelledby="simulation-title">
-      <div class="container mx-auto px-4">
-
-        <h2 id="simulation-title" class="sr-only">Noise Simulation and Metrics</h2>
-
-        <!-- Visualization Card -->
-        <section class="glass-card rounded-2xl p-6 mb-10" aria-label="Sound wave visualization">
-          <h3 class="text-2xl font-bold mb-4">🔊 Sound Wave Propagation</h3>
-
-          <div class="relative bg-black rounded-xl overflow-hidden" style="height: 500px;">
-            <canvas id="noise-3d-scene" aria-label="3D sound wave visualization"></canvas>
-          </div>
-
-          <div class="mt-6">
-            <label for="noise-level-slider" class="block text-sm font-medium mb-2">
-              Ambient Noise Level
-            </label>
-            <input type="range" id="noise-level-slider" min="0" max="120" value="65"
-              class="w-full accent-eco-purple" aria-valuemin="0" aria-valuemax="120" aria-valuenow="65">
-          </div>
-        </section>
-
-        <!-- Health and Mitigation -->
-        <div class="grid md:grid-cols-2 gap-8">
-          <section class="glass-card rounded-2xl p-6" aria-labelledby="health-title">
-            <h3 id="health-title" class="text-xl font-bold mb-4">⚕️ Health Impacts</h3>
-            <!-- content unchanged -->
-          </section>
-
-          <section class="glass-card rounded-2xl p-6" aria-labelledby="mitigation-title">
-            <h3 id="mitigation-title" class="text-xl font-bold mb-4">🛡️ Mitigation Strategies</h3>
-            <!-- content unchanged -->
-          </section>
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
         </div>
 
-      </div>
-    </section>
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-900 border-t border-gray-800 absolute w-full shadow-2xl">
+            <div class="px-4 py-4 space-y-3">
+                <a href="index.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-blue transition-colors focus-outline" tabindex="0">Home</a>
+                <a href="air.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-red transition-colors focus-outline" tabindex="0">Air
+                    Pollution</a>
+                <a href="water.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-blue transition-colors focus-outline" tabindex="0">Water
+                    Pollution</a>
+                <a href="light.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-orange transition-colors focus-outline" tabindex="0">Light
+                    Pollution</a>
+                <a href="noise.html"
+                    class="block py-3 px-4 rounded-lg bg-gray-800/50 text-eco-purple font-medium border-l-4 border-eco-purple focus-outline" tabindex="0">Noise
+                    Pollution</a>
+                <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors focus-outline" tabindex="0">AI
+                    Prediction</a>
+                <a href="presentation.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-green transition-colors">Demo</a>
+            </div>
+        </div>
+    </nav>
 
-  </main>
+    <main class="pt-16">
+        <section class="relative py-28 min-h-[60vh] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1974"
+                    alt="Noise Pollution" class="w-full h-full object-cover animate-fade-in">
+                <div class="absolute inset-0 bg-gray-900/70 mix-blend-multiply"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
+            </div>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 border-t border-gray-800 py-12" role="contentinfo">
-    <!-- content unchanged -->
-  </footer>
+            <div class="container mx-auto px-4 text-center relative z-10 animate-slide-up">
+                <span
+                    class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-wider text-purple-200 uppercase bg-purple-900/60 rounded-full border border-purple-500/30 backdrop-blur-sm shadow-[0_0_20px_rgba(139,92,246,0.3)]">
+                    Urban Challenge
+                </span>
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight drop-shadow-2xl">
+                    Noise <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300">Pollution</span>
+                </h1>
+                <p
+                    class="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-light drop-shadow-lg">
+                    45% of urban populations are exposed to harmful noise levels. <br>Understand the invisible threat affecting millions.
+                </p>
 
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="js/script.js"></script>
-  <script src="js/noice.js"></script>
-  <script src="js/main.js"></script>
+                <div class="mt-8 flex justify-center gap-4">
+                    <button onclick="document.getElementById('simulation-section').scrollIntoView({behavior: 'smooth'})"
+                        class="px-8 py-3 bg-eco-purple text-white rounded-full font-semibold hover:bg-purple-600 transition-all hover:scale-105 shadow-lg shadow-purple-500/30">
+                        View Simulation
+                    </button>
+                </div>
+            </div>
+        </section>
 
+        <section id="simulation-section" class="py-16 bg-gray-900">
+            <div class="container mx-auto px-4">
+                <div class="grid lg:grid-cols-12 gap-8">
+
+                    <div class="lg:col-span-8 space-y-6">
+                        <div class="glass-card rounded-2xl p-6 shadow-xl animate-slide-up"
+                            style="animation-delay: 0.1s;">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+                                    <svg class="w-6 h-6 text-eco-purple" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z">
+                                        </path>
+                                    </svg>
+                                    Sound Wave Propagation
+                                </h3>
+                                <div
+                                    class="flex items-center space-x-2 bg-gray-900/50 px-3 py-1 rounded-full border border-gray-700">
+                                    <span class="relative flex h-3 w-3">
+                                        <span
+                                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+                                        <span class="relative inline-flex rounded-full h-3 w-3 bg-purple-500"></span>
+                                    </span>
+                                    <span class="text-xs font-semibold text-gray-300 uppercase tracking-wide">Live
+                                        Simulation</span>
+                                </div>
+                            </div>
+
+                            <div class="relative bg-black rounded-xl overflow-hidden shadow-2xl border border-gray-700 group"
+                                style="height: 500px;">
+                                <canvas id="noise-3d-scene" class="w-full h-full"></canvas>
+
+                                <div id="noise-scene-loading"
+                                    class="absolute inset-0 bg-gray-900 flex items-center justify-center z-20 transition-opacity duration-500">
+                                    <div class="text-center">
+                                        <div
+                                            class="w-12 h-12 border-4 border-gray-700 border-t-eco-purple rounded-full animate-spin mx-auto mb-4">
+                                        </div>
+                                        <p class="text-gray-400 text-sm tracking-widest font-mono">LOADING SOUND WAVES...
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 bg-gray-900/50 p-5 rounded-xl border border-gray-700/50">
+                                <div class="flex justify-between mb-3">
+                                    <label class="text-sm font-medium text-gray-300">Ambient Noise Level</label>
+                                    <span id="noise-level-value"
+                                        class="text-eco-purple font-bold font-mono bg-gray-800 px-2 py-0.5 rounded">65 dB (Moderate)</span>
+                                </div>
+                                <div class="relative w-full h-6 flex items-center">
+                                    <input type="range" id="noise-level-slider" min="0" max="120" value="65"
+                                        class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-eco-purple hover:accent-purple-400 transition-all z-10">
+                                </div>
+                                <div class="flex justify-between text-xs text-gray-500 mt-2 font-mono">
+                                    <span>Silent</span>
+                                    <span>Construction Zone</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-4 space-y-6">
+                        <div class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.2s;">
+                            <h3 class="text-xl font-bold mb-4 flex items-center gap-2 text-white">
+                                <svg class="w-5 h-5 text-eco-purple" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                    </path>
+                                </svg>
+                                Current Metrics
+                            </h3>
+                            <div class="space-y-4">
+                                <div
+                                    class="bg-gray-800/50 p-4 rounded-xl border border-gray-700 hover:border-eco-purple/50 transition-all">
+                                    <div class="text-sm text-gray-400 mb-1">Urban Noise Average</div>
+                                    <div class="flex items-baseline gap-2">
+                                        <div class="text-3xl font-bold text-eco-purple">68</div>
+                                        <div class="text-xs text-gray-500">dB</div>
+                                    </div>
+                                    <div class="text-xs text-eco-red mt-2 flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
+                                        </svg>
+                                        Above safe levels
+                                    </div>
+                                </div>
+                                <div
+                                    class="bg-gray-800/50 p-4 rounded-xl border border-gray-700 hover:border-eco-purple/50 transition-all">
+                                    <div class="text-sm text-gray-400 mb-1">Sleep Disturbance</div>
+                                    <div class="text-3xl font-bold text-white">45%</div>
+                                    <div class="text-xs text-gray-500 mt-2">Affected population</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.3s;">
+                            <h3 class="text-xl font-bold mb-5 flex items-center gap-2 text-white">
+                                <span>👂</span> Health Impact
+                            </h3>
+                            <div class="space-y-3">
+                                <div
+                                    class="group flex items-center justify-between p-3 bg-gray-800/40 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors">
+                                    <span class="flex items-center gap-3 text-gray-300">❤️ Cardiovascular</span>
+                                    <span
+                                        class="text-eco-red font-bold text-sm bg-red-500/10 px-2 py-1 rounded">Risk +15%</span>
+                                </div>
+                                <div
+                                    class="group flex items-center justify-between p-3 bg-gray-800/40 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors">
+                                    <span class="flex items-center gap-3 text-gray-300">🧠 Cognitive</span>
+                                    <span
+                                        class="text-eco-orange font-bold text-sm bg-orange-500/10 px-2 py-1 rounded">Impaired</span>
+                                </div>
+                                <div
+                                    class="group flex items-center justify-between p-3 bg-gray-800/40 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors">
+                                    <span class="flex items-center gap-3 text-gray-300">😴 Sleep</span>
+                                    <span
+                                        class="text-eco-red font-bold text-sm bg-red-500/10 px-2 py-1 rounded">Disrupted</span>
+                                </div>
+                                <div
+                                    class="group flex items-center justify-between p-3 bg-gray-800/40 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors">
+                                    <span class="flex items-center gap-3 text-gray-300">👂 Hearing</span>
+                                    <span
+                                        class="text-yellow-500 font-bold text-sm bg-yellow-500/10 px-2 py-1 rounded">Damage Risk</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 border-t border-gray-800 py-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-6 flex justify-center">
+                <div
+                    class="w-12 h-12 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center mr-2">
+                    <span class="text-white font-bold text-2xl">E</span>
+                </div>
+            </div>
+            <p class="text-gray-500 text-sm">&copy; 2024 EcoPulse. Environmental Monitoring System.</p>
+        </div>
+    </footer>
+
+    <button id="scroll-to-top"
+        class="fixed bottom-8 right-8 p-3 bg-eco-purple text-white rounded-full shadow-lg shadow-purple-500/20 opacity-0 invisible transition-all duration-300 hover:bg-purple-600 transform translate-y-4 hover:-translate-y-1 z-50">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/noise-3d.js"></script>
+    <script src="js/noice.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- Initialize EcoPulse functionality -->
+    <script>
+        // Initialize EcoPulse functionality on this page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize mobile menu if EcoPulse is available
+            if (window.EcoPulse && typeof EcoPulse.initMobileMenu === 'function') {
+                EcoPulse.initMobileMenu();
+            }
+            
+            // Initialize scroll to top if available
+            if (window.EcoPulse && typeof EcoPulse.initScrollToTop === 'function') {
+                EcoPulse.initScrollToTop();
+            }
+            
+            // Initialize scroll reveal for noise page specific elements
+            if (window.EcoPulse && typeof EcoPulse.initScrollReveal === 'function') {
+                EcoPulse.initScrollReveal();
+            }
+            
+            // Additional noise-specific scroll reveal for any new elements
+            const noiseReveals = document.querySelectorAll('.glass-card, .animate-slide-up');
+            if (noiseReveals.length && window.IntersectionObserver) {
+                const noiseObserver = new IntersectionObserver(
+                    (entries, observer) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.style.opacity = '1';
+                                entry.target.style.transform = 'translateY(0)';
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.1,
+                        rootMargin: '0px 0px -50px 0px'
+                    }
+                );
+                
+                noiseReveals.forEach(el => {
+                    // Set initial state for animation
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(20px)';
+                    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    noiseObserver.observe(el);
+                });
+            }
+        });
+    </script>
 </body>
+
 </html>
