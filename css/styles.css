@@ -1,6 +1,15 @@
 /* ===============================
    HERO BASE
 ================================ */
+@keyframes fade-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out;
+}
+
 .hero-section {
   position: relative;
   min-height: 100vh;
@@ -163,6 +172,99 @@
     background-size: 620px;
     background-position: center;
   }
+  .hero-glass { padding: 36px 24px; }
+  .fade-left, .fade-right { transform: translateY(40px); }
+  .scroll-reveal.from-left, .scroll-reveal.from-right { transform: translateY(40px); }
+}
+
+/* ===============================
+   EcoPulse Global Styles
+
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 18px;
+  padding: 1.75rem;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  backdrop-filter: blur(8px) saturate(120%);
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.ecopulse-card {
+  padding: 1.6rem;
+}
+
+.card .w-16 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 18px rgba(2,6,23,0.6);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card h3 {
+  font-size: 1.125rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #38bdf8, #10b981);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card p {
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(2,6,23,0.55), 0 10px 30px rgba(16,185,129,0.06);
+  border-color: rgba(56,189,248,0.12);
+}
+
+.card:hover .w-16 {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 18px 40px rgba(2,6,23,0.55), 0 6px 14px rgba(59,130,246,0.06);
+}
+
+/* CTA inside feature area */
+#why-ecopulse .inline-block {
+  box-shadow: 0 8px 30px rgba(16,185,129,0.06);
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem;
+    min-height: unset;
+  }
+  .card h3 { font-size: 1.0625rem; }
+}
+
+
+
+/* --- Custom Logo Styles --- */
+.gradient-text {
+  background: linear-gradient(to right, #ffffff, #9ca3af);
+  /* White to Gray-400 */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Scroll to Top Button Visibility Classes */
+#scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
 
   .hero-glass {
     padding: 32px 20px;
@@ -172,14 +274,40 @@
     font-size: clamp(2.2rem, 7vw, 3rem);
   }
 
-  .hero-glass p {
-    font-size: 1rem;
-  }
+/* Range Slider Styling */
+input[type=range] {
 
-  .fade-left,
-  .fade-right {
-    transform: translateY(40px);
-  }
+    -webkit-appearance: none; 
+  appearance: none;
+    background: transparent; 
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #ef4444; 
+    cursor: pointer;
+    margin-top: -6px; 
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+
+  -webkit-appearance: none;
+  background: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #ef4444;
+  cursor: pointer;
+  margin-top: -6px;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+
+}
 
   .scroll-reveal.from-left,
   .scroll-reveal.from-right {
@@ -202,3 +330,185 @@ footer {
     transparent
   );
 }
+
+.reviews-header h2 {
+
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #38bdf8, #22c55e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #38bdf8, #22c55e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+}
+
+.reviews-header p {
+  color: #94a3b8;
+  font-size: 1.2rem;
+}
+
+/* Review Cards */
+.review-card {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin: 1rem;
+  min-width: 300px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.review-content {
+  color: #e2e8f0;
+  font-style: italic;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.review-author { display: flex; align-items: center; }
+.review-author .author-name { font-weight: 600; color: #38bdf8; }
+.review-author .author-title { color: #94a3b8; font-size: 0.9rem; margin-top: 0.25rem; }
+
+/* Scrolling Reviews */
+.reviews-track {
+  display: flex;
+  width: max-content;
+  animation: scrollReviews 30s linear infinite;
+}
+
+.reviews-track:hover { animation-play-state: paused; }
+
+@keyframes scrollReviews {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.reviews-wrapper {
+  display: flex;
+  width: 200%;
+  /* Double width to create seamless loop */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .reviews-header h2 { font-size: 2rem; }
+  .review-card { min-width: 280px; padding: 1.25rem; }
+  .reviews-track { animation: scrollReviews 20s linear infinite; }
+}
+
+/* Dashboard Styles */
+.dashboard-mode-btn.active {
+  background: rgba(56, 189, 248, 0.2) !important;
+  border-color: rgba(56, 189, 248, 0.3) !important;
+  color: #38bdf8 !important;
+}
+
+.dashboard-card {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: rgba(56, 189, 248, 0.4) !important;
+}
+
+.chart-time-btn.active {
+  background: rgba(56, 189, 248, 0.2) !important;
+  color: #38bdf8 !important;
+}
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+.map-container { position: relative; }
+.hotspot-item { transition: all 0.3s ease; }
+.hotspot-item:hover {
+  background: rgba(55, 65, 81, 0.7) !important;
+  transform: translateX(5px);
+}
+
+/* Animation for live indicators */
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+/* Loading indicators for dashboard */
+.dashboard-loader { display: flex; align-items: center; justify-content: center; }
+.chart-loader { display: flex; align-items: center; justify-content: center; }
+
+/* Spin animation for loading indicators */
+@keyframes spin { to { transform: rotate(360deg); } }
+.animate-spin { animation: spin 1s linear infinite; }
+
+/* Responsive dashboard */
+@media (max-width: 1024px) {
+  .dashboard-card { min-width: 300px; }
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid { grid-template-columns: 1fr !important; }
+  .map-container { order: 2; }
+  .map-info { order: 1; }
+}
+
+/* ============================= */
+/* EcoPulse - Feature Cards */
+/* ============================= */
+.ecopulse-card {
+  border: 1px solid #374151;
+  /* gray-700 */
+  border-radius: 0.75rem;
+  /* rounded-xl */
+  padding: 1.5rem;
+  /* p-6 */
+  background-color: rgba(17, 24, 39, 0.6);
+  /* gray-900 with opacity */
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+.ecopulse-card:hover {
+  border-color: #3b82f6;
+  /* eco blue */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transform: translateY(-6px);
+}
+
+/* --- NEW UI ENHANCEMENTS --- */
+@keyframes brand-pulse-glow {
+  0% { transform: scale(1); filter: drop-shadow(0 0 0px rgba(56, 189, 248, 0)); }
+  50% { transform: scale(1.05); filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.5)); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 0px rgba(56, 189, 248, 0)); }
+}
+
+.pulse-element { animation: brand-pulse-glow 2.5s infinite ease-in-out; }
+
+/* Dynamic AQI Border/Background Classes */
+.aqi-status-good { border-left: 5px solid #10B981 !important; background: rgba(16, 185, 129, 0.08) !important; }
+.aqi-status-moderate { border-left: 5px solid #FBBF24 !important; background: rgba(251, 191, 36, 0.08) !important; }
+.aqi-status-unhealthy { border-left: 5px solid #F97316 !important; background: rgba(249, 115, 22, 0.08) !important; }
+.aqi-status-hazardous { border-left: 5px solid #8B5CF6 !important; background: rgba(139, 92, 246, 0.08) !important; }
