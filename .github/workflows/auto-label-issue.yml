@@ -9,6 +9,8 @@ permissions:
 
 jobs:
   label:
+    permissions:
+      issues: write
     runs-on: ubuntu-latest
     steps:
       - name: Add labels to issue

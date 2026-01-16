@@ -10,6 +10,9 @@ permissions:
 
 jobs:
   label:
+    permissions:
+      pull-requests: write
+      issues: write
     runs-on: ubuntu-latest
     steps:
       - name: Add labels to PR
